@@ -1,7 +1,6 @@
 const square = (arr) => {
 
-  var firstLine = (arr) => arr.reduce((a,c)=>a+c, '') + '\n';
-  var lastLine = (arr) => arr.reduce((a,c)=>c+a, '') + '\n';
+  var arrayOfCharConcat = (arr) => arr.reduce((a,c)=>a+c, '') + '\n';
 
   var middleLine = () => {
     
@@ -16,7 +15,7 @@ const square = (arr) => {
     return result;
   }
   
-  console.log(firstLine(arr) + middleLine() + lastLine(arr));
+  console.log(arrayOfCharConcat(arr) + middleLine() + arrayOfCharConcat(arr.reverse()));
 }
 
 square(['a', 'b']);
