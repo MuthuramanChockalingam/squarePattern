@@ -1,23 +1,21 @@
-const square = (arr) => {
-
-  var arrayOfCharConcat = (arr) => arr.reduce((a,c)=>a+c, '') + '\n';
-
-  var middleLine = () => {
-    
-    var result='';
-    var m = arr.length - 1;
-    var count = arr.length - 2;
-
-    for (var i = 0; i < count; i++) {
-      result = result + ( (firstCharacter = arr[i + 1]) +
-        (spaces = ' '.repeat(count)) + (secondCharacter = '' + arr[m - i - 1]) +'\n');
-    }
-    return result;
-  }
-  
-  console.log(arrayOfCharConcat(arr) + middleLine() + arrayOfCharConcat(arr.reverse()));
+const middleLine = (arr) => {
+  return arr.map((val,i,arr) => val + ' '.repeat(arr.length) + arr[arr.length - i - 1]);
 }
 
-square(['a', 'b']);
-square(['a', 'b', 'c']);
-square(['a', 'b', 'c', 'd', 'e']);
+const square = (arr) => {
+
+  var firstLine = arr.join('');
+  var lastLine = arr.slice().reverse().join('');
+  
+  const Lines = [
+    firstLine,
+    ...middleLine(arr.slice(1,-1)),
+    lastLine,
+  ]
+
+  return Lines.join('\n');
+}
+
+console.log(square(['a', 'b']),'\n');
+console.log(square(['a', 'b', 'c']),'\n');
+console.log(square(['a', 'b', 'c', 'd', 'e']),'\n');
